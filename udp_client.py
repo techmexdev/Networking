@@ -8,10 +8,9 @@ client_socket = socket(AF_INET, SOCK_DGRAM)
 
 while True:
     # get user input
-    message = input('\nSend a letter to the server\n')
+    message = input(f'\nSend a letter to {server_name}:{server_port}\n')
 
     encoded_message = message.encode()
-    print(f'sending encoded message {encoded_message} to {server_name}:{server_port}')
     client_socket.sendto(encoded_message, (server_name, server_port))
 
     # 4096 is reccomended buffer size: https://docs.python.org/3/library/socket.html#socket.socket.recv
